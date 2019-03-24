@@ -1,0 +1,6 @@
+numpy
+tf-nightly-gpu-2.0-preview
+matplotlib
+opencv-python
+scikit-learn==0.20.0
+pyyaml

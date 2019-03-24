@@ -1,0 +1,12 @@
+batch_size: 200
+epochs: 35
+image_size: [141, 141]
+labels: [Parasitized, Uninfected]
+output_models: models/
+plot_training_data: true
+random_state: 42
+test_size: 0.3
+train_images: cell_images/
+train_size: 6000
+validation_steps: 15
+steps_per_epoch: 60
