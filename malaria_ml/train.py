@@ -1,14 +1,17 @@
+"""Module used to train the model."""
+# pylint: disable=import-error, too-many-arguments, too-many-instance-attributes
 from datetime import datetime
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, Flatten, Dropout, Dense, MaxPooling2D
+from tensorflow.keras.layers import Conv2D, Flatten, \
+    Dropout, Dense, MaxPooling2D
 from tensorflow.keras import optimizers
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import TensorBoard
 from sklearn.model_selection import train_test_split
 
 
-class TrainModel(object):
+class TrainModel:
     """The class handles the building and training of the model.
 
     Parameters
@@ -34,19 +37,22 @@ class TrainModel(object):
 
     @property
     def model(self):
+        """Access to self._model."""
         return self._model
 
     @property
     def loss(self):
+        """Access to self._loss."""
         return self._loss
 
     @property
     def accuracy(self):
+        """Access to self._accuracy."""
         return self._accuracy
 
     def _build_model(self):
         """Creates the model described bellow and compiles it.
-        
+
         _________________________________________________________________
         Layer (type)                 Output Shape              Param #
         =================================================================
@@ -87,7 +93,8 @@ class TrainModel(object):
         -------
         None"""
         self._model = Sequential()
-        self._model.add(Conv2D(32, (3, 3), activation="relu", input_shape=self._input_shape))
+        self._model.add(Conv2D(32, (3, 3), activation="relu",
+                               input_shape=self._input_shape))
         self._model.add(MaxPooling2D(2, 2))
         self._model.add(Conv2D(64, (3, 3), activation="relu"))
         self._model.add(Conv2D(64, (3, 3), activation="relu"))
@@ -113,7 +120,8 @@ class TrainModel(object):
         Parameters
         ----------
         print_fn : function
-            Redirect the output to anything other than the built-in print function.
+            Redirect the output to anything other than
+            the built-in print function.
 
         Returns
         -------
@@ -121,9 +129,12 @@ class TrainModel(object):
         self._model.summary(print_fn=print_fn)
         return self
 
-    def feed_data(self, dataset, labels, test_size=0.3, batch_size=150, random_state=42):
-        """Creates an ImageDataGenerator from a given data set. The data is split into
-        training and testing sets using scikit-learn's train_test_split function.
+    def feed_data(self, dataset, labels, test_size=0.3,
+                  batch_size=150, random_state=42):
+        """Creates an ImageDataGenerator from a given
+        data set. The data is split into training and
+        testing sets using scikit-learn's
+        train_test_split function.
 
         Parameters
         ----------
