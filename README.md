@@ -137,5 +137,27 @@ The pre-trained model can be downloaded from [here](https://www.dropbox.com/s/0b
 Random sample of uninfected cells, never used in the training:
 ![uninfected](/images/Uninfected.png "Uninfected")
 
+**UPDATE**
+
+I got a message from a user (who shall remain anonymous due to request) who trained the same network on a completely different dataset: The [Chest X-Ray Pneumonia dataset](http://academictorrents.com/details/7208a86910cc518ae8feaa9021bf7f8565b97644) and got similar results (over 90% accuracy) with just 1000 images per class. His parameters were set as follows:
+
+```
+batch_size: 60
+epochs: 35
+image_size: [150, 150]
+labels: [NORMAL, PNEUMONIA]
+output_models: models/
+plot_training_data: true
+random_state: 42
+test_size: 0.3
+train_images: chest_xray/train/
+train_size: 1000
+validation_steps: 15
+steps_per_epoch: 60
+```
+
+The models he trained are available [here](https://www.dropbox.com/s/2e2au2osagkiu4t/pneumonia.zip).
+
+
 Random sample of parasitized cells, never used in the training:
 ![parasitized](/images/Parasitized.png "Parasitized")
